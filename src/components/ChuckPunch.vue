@@ -33,8 +33,8 @@ export default {
   methods: {
     getPunchedRandomly (firstLoad = false) {
       const url = 'https://api.chucknorris.io/jokes/random'
-      this.isLoading = true
       if (!firstLoad) this.playPunchAudio()
+      this.isLoading = true
       axios.get(url).then((res) => {
         this.joke = res.data.value
         this.isLoading = false

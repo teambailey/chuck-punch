@@ -10,7 +10,7 @@
         </div>
       </div>
       <audio preload="auto">
-        <source src="../assets/punch-sound.mp3" type="audio/mp3" />
+        <source src="../assets/punch-sound.mp3" type="audio/mpeg" />
         This text displays if the audio tag isn't supported.
       </audio>
     </div>
@@ -23,10 +23,6 @@ import axios from 'axios'
 
 export default {
   name: 'ChuckPunch',
-  created () {
-    // this.buildPunchAudio()
-    this.getPunchedRandomly(true)
-  },
   data () {
     return {
       isLoading: false,
@@ -42,15 +38,22 @@ export default {
       axios.get(url).then((res) => {
         this.joke = res.data.value
         this.isLoading = false
+        // if (!firstLoad) this.punchAudio.pause()
       })
     },
     playPunchAudio () {
-      const audioEl = document.querySelector('audio')
-      if (audioEl) {
-        audioEl.currentTime = 0
-        audioEl.play()
-      }
+      if (this.punchAudio) this.punchAudio.currentTime = 0
+      const canPlay = this.punchAudio.play()
+      canPlay.then(() => {
+        console.log('audio is ready')
+      }).catch((err) => {
+        console.log(err)
+      })
     }
+  },
+  mounted () {
+    this.punchAudio = document.querySelector('audio')
+    this.getPunchedRandomly(true)
   }
 }
 </script>

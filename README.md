@@ -1,4 +1,4 @@
-# panda-pins
+# Chuck Punch
 
 > A Vue.js project
 

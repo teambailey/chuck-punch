@@ -1,0 +1,10 @@
+/**
+ * Transitions
+ */
+@mixin trans($prop) {
+  transition: $prop 600ms ease-in-out;
+}
+
+@mixin transAlt($prop) {
+  transition: $prop 425ms ease-in-out;
+}

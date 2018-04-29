@@ -1,0 +1,32 @@
+/**
+ * Breakpoints
+ */
+// $breakpoints: (
+//   'small'  : ( max-width:  599px ),
+//   'medium' : ( min-width:  900px ),
+//   'large'  : ( min-width: 1200px ),
+//   'super'  : ( min-width: 1800px )
+// );
+//
+// @mixin breakpoint($name) {
+//   // If the key exists in the map
+//   @if map-has-key($breakpoints, $name) {
+//     // Prints a media query based on the value
+//     @media #{inspect(map-get($breakpoints, $name))} {
+//       @content;
+//     }
+//   }
+// }
+
+// --- At-least / Until Media Queries
+@mixin at-least($device-width) {
+  @media screen and (min-width: $device-width) {
+      @content;
+  }
+}
+
+@mixin until($device-width) {
+  @media screen and (max-width: $device-width - 1) {
+      @content;
+  }
+}
